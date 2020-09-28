@@ -1,0 +1,10 @@
+{
+    "name": "three-font-outliner",
+    "version": "1.0.0",
+    "author": "ycw (https://github.com/ycw)",
+    "main": "src/index.js",
+    "devDependencies": {
+        "three": "^0.120.1"
+    },
+    "dependencies": {}
+}
