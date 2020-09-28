@@ -10,8 +10,7 @@
         "src",
         "lib"
     ],
-    "devDependencies": {
+    "dependencies": {
         "three": "^0.120.1"
-    },
-    "dependencies": {}
+    }
 }
