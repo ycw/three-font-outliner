@@ -1,6 +1,6 @@
 # About
 
-Constructing shapes from glyphs at runtime for three.js.
+Constructing shapes from glyphs at runtime for three.js. ([demo](examples/edges/index.html))
 
 ## Installation
 
