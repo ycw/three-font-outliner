@@ -3,7 +3,20 @@
 Constructing shapes from glyphs at runtime for three.js.
 
 ## Installation
-(TODO)
+
+Via npm: 
+
+`npm i ycw/three-font-outliner#1.0.0`
+
+```js
+import Outliner from "three-font-outliner"
+```
+
+Via cdn ( [jsDelivr](https://cdn.jsdelivr.net/gh/ycw/three-font-outliner/) ):
+
+```js
+import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.0/src/index.js"
+```
 
 ## Usage
 
@@ -32,14 +45,13 @@ Consume outline result.
 
 ```js
 const {
-    shapes, // Array of THREE.Shape 
-    h,      // Line height
-    w,      // Advance width
-    yMin,   // Bottom (negative number)
-    yMax,   // Top
+    shapes, // Array of THREE.Shape.
+    h,      // Line height.
+    w,      // Advance width.
+    yMin,   // Bottom (negative number).
+    yMax,   // Top.
 } = outliner.outline("hello");
 ```
-
 
 ## Credits
 
