@@ -3,6 +3,11 @@
     "version": "1.0.0",
     "author": "ycw (https://github.com/ycw)",
     "main": "src/index.js",
+    "type": "module",
+    "files": [
+        "src",
+        "lib"
+    ],
     "devDependencies": {
         "three": "^0.120.1"
     },
