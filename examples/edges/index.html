@@ -1,0 +1,64 @@
+<!doctype html>
+
+<head>
+    <title>Outliner</title>
+    <meta charset="utf8">
+    <style>
+        canvas {
+            position: fixed; left:0; top:0; 
+            display: block; width: 100%; height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js"
+        import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js"
+        import Outliner from "../../src/index.js"
+
+        // ----
+        // Boot
+        // ----
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 2, .1, 10000);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        window.addEventListener('resize', () => {
+            const { clientWidth, clientHeight } = renderer.domElement;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(clientWidth, clientHeight, false);
+            camera.aspect = clientWidth / clientHeight;
+            camera.updateProjectionMatrix();
+        });
+        document.body.prepend(renderer.domElement);
+        window.dispatchEvent(new Event('resize'));
+        renderer.setAnimationLoop(t => {
+            renderer.render(scene, camera);
+            controls.update();
+        });
+
+        // ----
+        // Main
+        // ----
+
+        scene.background = new THREE.Color("white");
+        camera.position.set(-200, 0, 300);
+        controls.autoRotate = true;
+
+        (async function () {
+            const outliner = await Outliner.fromUrl("../fonts/aqua/aqua.ttf", THREE.ShapePath);
+            const { shapes } = outliner.outline("outliner");
+            const geom = new THREE.ExtrudeBufferGeometry(shapes, {
+                depth: 5, curveSegments: 5, 
+                bevelSegments: 5, bebelSize: 5, bevelThickness: 5
+            }).center();
+            scene.add(new THREE.Mesh(geom));
+            scene.add(new THREE.LineSegments(
+                new THREE.EdgesGeometry(geom, 2), 
+                new THREE.LineBasicMaterial({ color: "blue" })
+            ));
+        })();
+    </script>
+</body>
