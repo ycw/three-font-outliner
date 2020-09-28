@@ -22,15 +22,9 @@ Outline text.
 ```js
 // outline text with optional options.
 outliner.outline("hello", {
-    // Font size. 
-    // Default 100.
-    size: 100,
-    // Is text written in left-to-right? 
-    // Default true.
-    isLTR: true,
-    // Is solid shape using counter-clockwise winding? 
-    // Default false.  
-    isCCW: false, 
+    size: 100,    // Font size. Default 100.
+    isLTR: true,  // Is text written in left-to-right? Default true.
+    isCCW: false, // Is solid shape using CCW winding? Default false.
 });
 ```
 
