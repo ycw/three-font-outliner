@@ -4,10 +4,7 @@
     <title>Outliner</title>
     <meta charset="utf8">
     <style>
-        canvas {
-            position: fixed; left:0; top:0; 
-            display: block; width: 100%; height: 100vh;
-        }
+        canvas { position: fixed; left:0; top:0; display: block; height: 100vh; }
     </style>
 </head>
 
@@ -50,7 +47,7 @@
         (async function () {
             const outliner = await Outliner.fromUrl("../fonts/aqua/aqua.ttf", THREE.ShapePath);
             const { shapes } = outliner.outline("outliner");
-            
+
             const options = { depth: 5, curveSegments: 5, bevelSegments: 5 };
             const geom = new THREE.ExtrudeBufferGeometry(shapes, options).center();
             scene.add(new THREE.Mesh(geom));
