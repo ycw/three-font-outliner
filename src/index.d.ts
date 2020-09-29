@@ -17,7 +17,19 @@ export default class Outliner {
     constructor(buf: ArrayBuffer, ShapePath: THREE.ShapePath);
 
     /**
-     * 
+     * A Typr font object holding tables e.g. "head".
+     * @internal
+     */
+    _font: object;
+
+    /**
+     * The `THREE.ShapePath` object injected from constructor.
+     * @internal
+     */
+    _ShapePath: THREE.ShapePath;
+
+    /**
+     * Outline text.
      * @param text - Single-line text.
      * @param options - Configure shapes. 
      */
