@@ -46,19 +46,19 @@
         controls.autoRotate = true;
         controls.autoRotateSpeed = -5;
 
-        const chars = "Along path".split("");
+        const chars = "Along path ".split("");
 
         // Generate "crown" path
         const points = [];
-        for (let i = 0, I = chars.length; i < I; ++i) {
+        for (let i = 0, I = chars.length; i <= I; ++i) {
             const angle = i / I * Math.PI * 2;
             const x = 100 * Math.sin(angle);
-            const y = i % 2 * 50;
+            const y = i % 2 * 20;
             const z = 100 * Math.cos(angle);
             points.push(new THREE.Vector3(x, y, z));
         }
         const path = new THREE.CatmullRomCurve3(points);
-        const frenetFrames = path.computeFrenetFrames(chars.length);
+        const frenetFrames = path.computeFrenetFrames(chars.length, true);
 
         // Show "crown" path
         scene.add(new THREE.Line(
