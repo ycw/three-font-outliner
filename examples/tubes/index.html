@@ -58,9 +58,11 @@
                     if (curve2s.length === 0) continue;
                     const curvePath = CurvePath(curve2s);
                     const tubularSegments = curvePath.getLength() | 0;
-                    group.add(new THREE.Mesh(
-                        new THREE.TubeBufferGeometry(curvePath, tubularSegments, 3, 8, true),
-                        new THREE.MeshBasicMaterial({ color: "blue" })
+                    const geom = new THREE.TubeBufferGeometry(curvePath, tubularSegments, 4, 8, true);
+                    group.add(new THREE.Mesh(geom));
+                    group.add(new THREE.LineSegments(
+                        new THREE.EdgesGeometry(geom, 5),
+                        new THREE.LineBasicMaterial({ color: "blue" })
                     ));
                 }
             }
