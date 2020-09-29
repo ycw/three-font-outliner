@@ -52,6 +52,7 @@ export default class Outliner {
          * @defaultValue `false`
          */
         isCCW?: boolean
+
     }): {
 
         /**
@@ -70,7 +71,7 @@ export default class Outliner {
         w: number,
 
         /**
-         * Bottom.
+         * Bottom (negative number).
          */
         yMin: number,
 
@@ -78,5 +79,6 @@ export default class Outliner {
          * Top.
          */
         yMax: number
+
     };
 }
