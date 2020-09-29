@@ -13,16 +13,13 @@ export default class Outliner {
 
 	outline(text, options = {}) {
 		options = Object.assign({ size: 100, isLTR: true, isCCW: false }, options);
+
 		const font = this._font;
-		const s = options.size / font.head.unitsPerEm;
 		const shape = Typr.U.shape(font, text, options.isLTR);
-
-		//
-		// Generate THREE shape[]
-		//
-
+		
 		const { cmds, crds } = Typr.U.shapeToPath(font, shape);
 		const shapePath = new this._ShapePath();
+		const s = options.size / font.head.unitsPerEm;
 		let i = 0;
 		for (const cmd of cmds) {
 			switch (cmd) {
@@ -41,7 +38,7 @@ export default class Outliner {
 			}
 		}
 
-		// Convert to shapes
+		// Convert shapePath to shapes
 		const shapes = shapePath.toShapes(options.isCCW);
 
 		// Compute line height
