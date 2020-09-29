@@ -8,7 +8,7 @@ Constructing shapes from glyphs at runtime for three.js.
 
 ## Installation
 
-Via npm: ( `npm i ycw/three-font-outliner#v1.0.0` )
+Via npm: ( `npm i ycw/three-font-outliner#v1.0.2` )
 
 ```js
 import Outliner from "three-font-outliner"
@@ -17,7 +17,7 @@ import Outliner from "three-font-outliner"
 Via cdn:
 
 ```js
-import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.0/src/index.js"
+import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.2/src/index.js"
 ```
 
 ## Usage
