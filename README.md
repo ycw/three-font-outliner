@@ -27,17 +27,17 @@ import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.2/
 Create an outliner.
 
 ```js
-// (sync) from an arraybuffer holding font file.
+// From arraybuffer holding the font file.
 new Outliner(buffer, THREE.ShapePath);
 
-// (async) from font url.
+// From font url. (async)
 await Outliner.fromUrl("./roboto.ttf", THREE.ShapePath);
 ```
 
 Outline text.
 
 ```js
-// outline text with optional options.
+// Outline text with optional options.
 outliner.outline("hello", {
     size: 100,    // Font size. Default 100.
     isLTR: true,  // Is text written in left-to-right? Default true.
