@@ -37,7 +37,7 @@
         renderer.setAnimationLoop(() => {
             renderer.render(scene, camera);
             controls.update();
-            scene.userData.loop && scene.userData.loop(clock.getDelta());
+            scene.userData.loop && scene.userData.loop(Math.min(1 / 60, clock.getDelta()));
         });
 
         // ----
