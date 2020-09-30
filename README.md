@@ -9,6 +9,7 @@ Constructing shapes from glyphs at runtime for three.js.
 - [Points](https://ycw.github.io/three-font-outliner/examples/points/)
 - [Lines](https://ycw.github.io/three-font-outliner/examples/lines/)
 - [Tubes](https://ycw.github.io/three-font-outliner/examples/tubes/)
+- [Cannon](https://ycw.github.io/three-font-outliner/examples/cannon/)
 
 ## Installation
 
