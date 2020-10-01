@@ -64,14 +64,13 @@
                 const { shapes, w, h } = outliner.outline(char);
 
                 const group = new THREE.Group();
-                scene.add(group);
                 const geom = new THREE.ExtrudeBufferGeometry(shapes, { depth: 15, curveSegments: 2, bevelThickness: 10 }).center();
                 group.add(new THREE.Mesh(geom));
-                const mat = new THREE.LineBasicMaterial({ color: "blue" });
-                group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom, 2), mat));
+                group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geom, 2), new THREE.LineBasicMaterial({ color: "blue" })));
+                scene.add(group);
 
-                const { x, y, z } = geom.boundingBox.getSize(new THREE.Vector3());
-                const c_body = new CANNON.Body({ mass: 1, shape: new CANNON.Box(new CANNON.Vec3(0.45 * x, 0.45 * y, 0.45 * z)) });
+                const size = geom.boundingBox.getSize(new THREE.Vector3());
+                const c_body = new CANNON.Body({ mass: 1, shape: new CANNON.Box(size.multiplyScalar(0.45)) });
                 c_body.position.set(w, (i + 1) * h, 0);
                 c_body.quaternion.setFromEuler(i * Math.PI / 10, 0, 0);
                 c_world.addBody(c_body);
@@ -82,10 +81,8 @@
             scene.userData.loop = (dt) => {
                 c_world.step(dt);
                 for (const group of groups) {
-                    const p = group.userData.c_body.position;
-                    group.position.set(p.x, p.y, p.z);
-                    const q = group.userData.c_body.quaternion;
-                    group.quaternion.set(q.x, q.y, q.z, q.w);
+                    group.position.copy(group.userData.c_body.position);
+                    group.quaternion.copy(group.userData.c_body.quaternion);
                 }
             };
         })();
