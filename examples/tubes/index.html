@@ -32,7 +32,7 @@
         });
         document.body.prepend(renderer.domElement);
         window.dispatchEvent(new Event('resize'));
-        renderer.setAnimationLoop(t => {
+        renderer.setAnimationLoop(() => {
             renderer.render(scene, camera);
             controls.update();
         });
@@ -80,7 +80,6 @@
                 curve2.getPoint = t => new THREE.Vector3(...f.call(curve2, t).toArray());
                 return curve2;
             }
-
         })();
     </script>
 </body>

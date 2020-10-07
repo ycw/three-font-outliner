@@ -32,7 +32,7 @@
         });
         document.body.prepend(renderer.domElement);
         window.dispatchEvent(new Event('resize'));
-        renderer.setAnimationLoop(t => {
+        renderer.setAnimationLoop(() => {
             renderer.render(scene, camera);
             controls.update();
         });
@@ -63,7 +63,6 @@
                     }
                 }
             }
-
         })();
     </script>
 </body>
