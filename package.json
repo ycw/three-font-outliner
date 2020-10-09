@@ -1,17 +1,27 @@
 {
     "name": "three-font-outliner",
     "description": "Constructing shapes from glyphs at runtime for three.js.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "ycw (https://github.com/ycw)",
     "repository": "github:ycw/three-font-outliner",
     "license": "MIT",
-    "main": "src/index.js",
     "type": "module",
+    "main": "src/index.js",
+    "typings": "src/index.d.ts",
+    "scripts": {
+        "build": "rollup -c rollup.config.js"
+    },
     "files": [
         "src",
-        "lib"
+        "lib",
+        "dist"
     ],
     "peerDependencies": {
         "three": ">=0.120.0"
+    },
+    "devDependencies": {
+        "rollup": "^2.29.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "terser": "^5.3.4"
     }
 }
