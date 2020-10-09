@@ -13,8 +13,7 @@
     },
     "files": [
         "src",
-        "lib",
-        "dist"
+        "lib"
     ],
     "peerDependencies": {
         "three": ">=0.120.0"
