@@ -16,7 +16,7 @@
         "lib"
     ],
     "peerDependencies": {
-        "three": ">=0.120.0"
+        "three": ">= 0.120.0"
     },
     "devDependencies": {
         "rollup": "^2.29.0",
