@@ -4,18 +4,18 @@ Constructing shapes from glyphs at runtime for three.js.
 
 ## Examples 
 
-- [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/)
+- [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/) - Load font from url.
+- [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
 - [Points](https://ycw.github.io/three-font-outliner/examples/points/)
   | [Lines](https://ycw.github.io/three-font-outliner/examples/lines/) 
   | [Tubes](https://ycw.github.io/three-font-outliner/examples/tubes/)
   | [Edges](https://ycw.github.io/three-font-outliner/examples/edges/)
   | [Along Path](https://ycw.github.io/three-font-outliner/examples/along-path/)
   | [Cannon](https://ycw.github.io/three-font-outliner/examples/cannon/)
-- [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/)
 
 ## Installation
 
-Via npm: ( `npm i ycw/three-font-outliner#v1.0.3` )
+Via npm: ( `npm i ycw/three-font-outliner#v1.0.4` )
 
 ```js
 import Outliner from "three-font-outliner"
@@ -24,7 +24,7 @@ import Outliner from "three-font-outliner"
 Via cdn:
 
 ```js
-import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.3/dist/lib.esm.js"
+import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.4/dist/lib.esm.js"
 ```
 
 ## Usage
@@ -52,6 +52,7 @@ const outliner = new Outliner(arrayBuffer, THREE.ShapePath);
 const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
 ```
 - Ex. [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
+- Ex. [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/) - Load font from url.
 
 Outline glyph for text:
 
