@@ -4,13 +4,14 @@ Constructing shapes from glyphs at runtime for three.js.
 
 ## Examples 
 
-- [Edges](https://ycw.github.io/three-font-outliner/examples/edges/)
-- [Along Path](https://ycw.github.io/three-font-outliner/examples/along-path/)
-- [Points](https://ycw.github.io/three-font-outliner/examples/points/)
-- [Lines](https://ycw.github.io/three-font-outliner/examples/lines/)
-- [Tubes](https://ycw.github.io/three-font-outliner/examples/tubes/)
-- [Cannon](https://ycw.github.io/three-font-outliner/examples/cannon/)
 - [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/)
+- [Points](https://ycw.github.io/three-font-outliner/examples/points/)
+  | [Lines](https://ycw.github.io/three-font-outliner/examples/lines/) 
+  | [Tubes](https://ycw.github.io/three-font-outliner/examples/tubes/)
+  | [Edges](https://ycw.github.io/three-font-outliner/examples/edges/)
+  | [Along Path](https://ycw.github.io/three-font-outliner/examples/along-path/)
+  | [Cannon](https://ycw.github.io/three-font-outliner/examples/cannon/)
+- [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/)
 
 ## Installation
 
@@ -29,9 +30,9 @@ import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.3/
 ## Usage
 
 ```js
-// Ex. Show "hello". 
-const outliner = await Outliner.fromUrl("./roboto.ttf", THREE.ShapePath);
-const { shapes } = outliner.outline("hello");
+// Ex. Show text "Shapes" using font "aqua.ttf".
+const outliner = await Outliner.fromUrl("./aqua.ttf", THREE.ShapePath);
+const { shapes } = outliner.outline("Shapes");
 scene.add(new THREE.Mesh(
     new THREE.ShapeBufferGeometry(shapes, 16).center(),
     new THREE.MeshBasicMaterial({ color: "blue", side: THREE.DoubleSide })
@@ -42,35 +43,45 @@ Live result: [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/
 
 ## Docs
 
-### Construct an `Outliner` for a font. 
-
-`new Outliner(arrayBuffer, ShapePath)`
-- Construct an `Outliner` from an `arraybuffer` holding the font file.
-- `ShapePath` is the `THREE.ShapePath` constructor.
-
-`Outliner.fromUrl(url, ShapePath)`
-- Construct an `Outliner` from an `url` to the font file asynchronously.
-- `ShapePath` is the `THREE.ShapePath` constructor.
-- This function returns a `Promsie`.
+Make a font outliner:
 
 ```js
-// Ex. Construct an `Outliner` from url-to-font. 
-const outliner = await Outliner.fromUrl("./roboto.ttf", THREE.ShapePath);
+// method1: from arraybuffer holding the font file.
+const outliner = new Outliner(arrayBuffer, THREE.ShapePath);
+// method2: from url-to-font. (async)
+const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
+```
+- Ex. [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
+
+Outline glyph for text:
+
+```js
+const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
+const result = outliner.outline("hello");
+
+result.shapes; // Array of `THREE.Shape`
+result.h; // Line height
+result.w; // Advance width
+result.yMin; // Bottom (usually a negative value)
+result.yMax; // Top
 ```
 
-### Outline glyph into `THREE.Shape`s.
+Method `.outline()` accepts optional options:
 
-`.outline(text, options)`
-- Outline `text` with `options`.
-  - `options.size` - Font size. Default `100`.
-  - `optinos.isLTR` - Is `text` written in left-toright? Default `true`.
-  - `options.isCCW` - Is solid shape using CCW winding? Default `false`.
-- This method returns an *object* which contains the following properties.
-  - `.shapes` - Array of `THREE.Shape`.
-  - `.h` - Line height.
-  - `.w` - Advance width.
-  - `.yMin` - Bottom (usually a negative value).
-  - `.yMax` - Top.
+```js
+outliner.outline("hello", {
+  size: 100, // Font size. Default 100,
+  isLTR: true, // Is left-to-right writing mode? Default true.
+  isCCW: false, // Is solid shape using CCW winding? Default false.
+});
+```
+
+Check if certain glyph exists:
+
+```js
+const codePoint = 65;
+outliner.hasGlyph(codePoint); // true / false
+```
 
 ## Credits
 
