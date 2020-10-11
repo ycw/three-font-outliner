@@ -53,4 +53,8 @@ export default class Outliner {
 
 		return { shapes, h, w, yMin, yMax };
 	}
+
+	hasGlyph(codePoint) {
+		return Typr.U.codeToGlyph(this._font, codePoint) > 0;
+	}
 }

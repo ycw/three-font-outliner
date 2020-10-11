@@ -34,7 +34,7 @@ export default class Outliner {
      * @param options - Configure shapes. 
      */
     outline(text: string, options?: {
-        
+
         /**
          * Font size.
          * @defaultValue `100`
@@ -81,4 +81,10 @@ export default class Outliner {
         yMax: number
 
     };
+
+    /**
+     * Check if font has certain glyph.
+     * @param codePoint - The unicode code point.
+     */
+    hasGlyph(codePoint: number): Boolean;
 }
