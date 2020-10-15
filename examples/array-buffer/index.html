@@ -58,7 +58,7 @@
                 const reader = new FileReader();
                 reader.readAsArrayBuffer(e.target.files[0]);
                 reader.addEventListener("load", () => {
-                    const outliner = new Outliner(reader.result, THREE.ShapePath);
+                    const outliner = new FontOutliner(reader.result, THREE.ShapePath);
                     scene.remove(textObject);
                     textObject = TextObject(outliner, text);
                     scene.add(textObject);
