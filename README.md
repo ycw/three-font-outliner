@@ -55,7 +55,7 @@ const outliner = await Outliner.fromUrl(THREE, fontUrl);
 - Ex. [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
 - Ex. [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/) - Load font from url.
 
-Outline glyph for text:
+Then, outline glyph:
 
 ```js
 const result = outliner.outline("hello");
@@ -67,10 +67,10 @@ result.yMin; // Bottom (usually a negative value)
 result.yMax; // Top
 ```
 
-Method `.outline()` accepts optional options:
+`.outline()` accepts optional options:
 
 ```js
-outliner.outline("hello", {
+const result = outliner.outline("hello", {
   size: 100, // Font size. Default 100,
   isLTR: true, // Is left-to-right writing mode? Default true.
   isCCW: false, // Is solid shape using CCW winding? Default false.
