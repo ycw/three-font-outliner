@@ -15,23 +15,23 @@ Constructing shapes from glyphs at runtime for three.js.
 
 ## Installation
 
-Via npm: ( `npm i ycw/three-font-outliner#v1.0.4` )
+Via npm: ( `npm i ycw/three-font-outliner#v2.0.0` )
 
 ```js
-import Outliner from "three-font-outliner"
+import { FontOutliner } from "three-font-outliner"
 ```
 
 Via cdn:
 
 ```js
-import Outliner from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@1.0.4/dist/lib.esm.js"
+import { FontOutliner } from "https://cdn.jsdelivr.net/gh/ycw/three-font-outliner@2.0.0/dist/lib.esm.js"
 ```
 
 ## Usage
 
 ```js
 // Ex. Show text "Shapes" using font "aqua.ttf".
-const outliner = await Outliner.fromUrl("./aqua.ttf", THREE.ShapePath);
+const outliner = await FontOutliner.fromUrl(THREE, "./aqua.ttf");
 const { shapes } = outliner.outline("Shapes");
 scene.add(new THREE.Mesh(
     new THREE.ShapeBufferGeometry(shapes, 16).center(),
@@ -46,10 +46,11 @@ Live result: [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/
 Make a font outliner:
 
 ```js
-// method1: from arraybuffer holding the font file.
-const outliner = new Outliner(arrayBuffer, THREE.ShapePath);
-// method2: from url-to-font. (async)
-const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
+// Method 1: Load from `Arraybuffer` holding the font file.
+const outliner = new FontOutliner(THREE, arrayBuffer);
+
+// Method 2: Load from url. (async)
+const outliner = await Outliner.fromUrl(THREE, fontUrl);
 ```
 - Ex. [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
 - Ex. [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/) - Load font from url.
@@ -57,7 +58,6 @@ const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
 Outline glyph for text:
 
 ```js
-const outliner = await Outliner.fromUrl(url, THREE.ShapePath);
 const result = outliner.outline("hello");
 
 result.shapes; // Array of `THREE.Shape`
@@ -77,11 +77,11 @@ outliner.outline("hello", {
 });
 ```
 
-Check if certain glyph exists:
+Check if certain glyph exists by unicode code point:
 
 ```js
 const codePoint = 65;
-outliner.hasGlyph(codePoint); // true / false
+outliner.hasGlyph(codePoint); // return true / false
 ```
 
 ## Credits
