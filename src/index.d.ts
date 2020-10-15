@@ -7,7 +7,7 @@ export class FontOutliner {
      * @param THREE - The three.js library.
      * @param fontUrl - The Url to font file.
      */
-    static async fromUrl(THREE: THREE, fontUrl: string): Promise<FontOutliner>;
+    static fromUrl(THREE: THREE, fontUrl: string): Promise<FontOutliner>;
 
     /**
      * Construct a `FontOutliner` using an `ArrayBuffer` holding the font file.
