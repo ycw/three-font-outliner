@@ -13,7 +13,7 @@
     <script type="module">
         import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js"
         import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js"
-        import Outliner from "../../src/index.js"
+        import { FontOutliner } from "../../src/index.js"
 
         // ----
         // Boot
@@ -67,7 +67,7 @@
         ));
 
         (async function () {
-            const outliner = await Outliner.fromUrl("../fonts/aqua/aqua.ttf", THREE.ShapePath);
+            const outliner = await FontOutliner.fromUrl(THREE, "../fonts/aqua/aqua.ttf");
             
             for (const [i, char] of chars.entries()) {
                 const { shapes, w } = outliner.outline(char);

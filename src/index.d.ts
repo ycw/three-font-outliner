@@ -1,20 +1,20 @@
 import * as THREE from "three"
 
-export default class Outliner {
+export class FontOutliner {
 
     /**
-     * Construct a `Outliner` from url asynchronously.
-     * @param fontUrl - Url to font.
-     * @param ShapePath - (DI) three.js's ShapePath.
+     * Construct a `FontOutliner` from url-to-font asynchronously.
+     * @param THREE - The three.js library.
+     * @param fontUrl - The Url to font file.
      */
-    static async fromUrl(fontUrl: string, ShapePath: THREE.ShapePath): Promise<Outliner>;
+    static async fromUrl(THREE: THREE, fontUrl: string): Promise<FontOutliner>;
 
     /**
-     * Construct a `Outliner` from `ArrayBuffer`.
-     * @param buf - ArrayBuffer holding the font.
-     * @param ShapePath - (DI) three.js's ShapePath.
+     * Construct a `FontOutliner` using an `ArrayBuffer` holding the font file.
+     * @param THREE - The three.js library.
+     * @param buf - An `ArrayBuffer` holding the font file.
      */
-    constructor(buf: ArrayBuffer, ShapePath: THREE.ShapePath);
+    constructor(THREE: THREE, buf: ArrayBuffer);
 
     /**
      * A Typr font object holding tables e.g. "head".
@@ -23,7 +23,7 @@ export default class Outliner {
     _font: object;
 
     /**
-     * The `THREE.ShapePath` object injected from constructor.
+     * The `THREE.ShapePath` object.
      * @internal
      */
     _ShapePath: THREE.ShapePath;

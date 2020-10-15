@@ -1,14 +1,14 @@
 import Typr from "../lib/Typr/index.js"
 
-export default class Outliner {
+export class FontOutliner {
 
-	static async fromUrl(fontUrl, ShapePath) {
-		return new Outliner(await (await fetch(fontUrl)).arrayBuffer(), ShapePath);
+	static async fromUrl(THREE, fontUrl) {
+		return new FontOutliner(THREE, await (await fetch(fontUrl)).arrayBuffer());
 	}
 
-	constructor(buf, ShapePath) {
-		this._font = Typr.parse(buf)[0];
-		this._ShapePath = ShapePath;
+	constructor(THREE, arrayBuffer) {
+		this._font = Typr.parse(arrayBuffer)[0];
+		this._ShapePath = THREE.ShapePath;
 	}
 
 	outline(text, options = {}) {

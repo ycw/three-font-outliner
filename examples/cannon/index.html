@@ -14,7 +14,7 @@
         import * as THREE from "https://unpkg.com/three@0.120.1/build/three.module.js"
         import { OrbitControls } from "https://unpkg.com/three@0.120.1/examples/jsm/controls/OrbitControls.js"
         import * as CANNON from "https://unpkg.com/cannon-es@0.15.1/dist/cannon-es.js"
-        import Outliner from "../../src/index.js"
+        import { FontOutliner } from "../../src/index.js"
 
         // ----
         // Boot
@@ -56,7 +56,7 @@
         c_world.addBody(c_groundBody);
 
         (async function () {
-            const outliner = await Outliner.fromUrl("../fonts/aqua/aqua.ttf", THREE.ShapePath);
+            const outliner = await FontOutliner.fromUrl(THREE, "../fonts/aqua/aqua.ttf");
             const text = "Cannon";
             const groups = [];
 
