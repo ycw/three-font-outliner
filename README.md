@@ -50,7 +50,7 @@ Make a font outliner:
 const outliner = new FontOutliner(THREE, arrayBuffer);
 
 // Method 2: Load from url. (async)
-const outliner = await Outliner.fromUrl(THREE, fontUrl);
+const outliner = await FontOutliner.fromUrl(THREE, fontUrl);
 ```
 - Ex. [Array Buffer](https://ycw.github.io/three-font-outliner/examples/array-buffer/) - Select font from file system.
 - Ex. [Shapes](https://ycw.github.io/three-font-outliner/examples/shapes/) - Load font from url.
